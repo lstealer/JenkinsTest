@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Jar Building..'
                 sh 'mvn clean package'
+                sh 'ls'
             }
         }
         stage('Test Jar') {
