@@ -6,12 +6,12 @@ pipeline {
             steps {
                 echo 'Jar Building..'
                 sh 'mvn clean package'
-                sh 'mkdir -p dockerimage && cd dockerimage && cat <<EOF >Dockerfile'
-                sh 'FROM openjdk:11'
-                sh 'EXPOSE 8080'
-                sh 'ADD sptest.jar sptest.jar'
-                sh 'ENTRYPOINT ["java","-jar","sptest.jar"]'
-                sh 'EOF'
+                sh 'mkdir -p dockerimage && cd dockerimage && cat <<EOF >Dockerfile
+                FROM openjdk:11
+                EXPOSE 8080
+                ADD sptest.jar sptest.jar
+                ENTRYPOINT ["java","-jar","sptest.jar"]
+                EOF'
             }
         }
         stage('Test Jar') {
