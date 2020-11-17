@@ -5,7 +5,7 @@ pipeline {
         stage('Build Jar') {
             steps {
                 echo 'Jar Building..'
-                sh 'mvn build clean'
+                sh 'mvn clean package'
             }
         }
         stage('Test Jar') {
