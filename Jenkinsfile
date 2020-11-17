@@ -6,12 +6,10 @@ pipeline {
             steps {
                 echo 'Jar Building..'
                 sh 'mvn clean package'
-                sh 'mkdir -p dockerimage && cd dockerimage && cat <<EOF >Dockerfile
-                FROM openjdk:11
-                EXPOSE 8080
-                ADD sptest.jar sptest.jar
-                ENTRYPOINT ["java","-jar","sptest.jar"]
-                EOF'
+                sh 'cp Dockerfile target/'
+                sh 'cp deployment.yaml target/'
+                sh 'cd target'
+                sh 'sudo docker build -t sptest .'
             }
         }
         stage('Test Jar') {
