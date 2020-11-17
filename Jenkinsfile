@@ -8,9 +8,7 @@ pipeline {
                 sh 'mvn clean package'
                 sh 'cp Dockerfile target/'
                 sh 'cp deployment.yaml target/'
-                sh 'cd target'
-                sh 'ls'
-                sh 'sudo docker build -t sptest .'
+                sh 'cd target && sudo docker build -t sptest .'
             }
         }
         stage('Test Jar') {
