@@ -8,7 +8,7 @@ pipeline {
                 sh 'mvn clean package'
                 sh 'cp Dockerfile target/'
                 sh 'cp deployment.yaml target/'
-                sh 'cd target && sudo docker build -t sptest . && sudo kubeadm apply -f deployment.yaml'
+                sh 'cd target && sudo docker build -t sptest . && sudo kubectl apply -f deployment.yaml'
             }
         }
         stage('Test Jar') {
