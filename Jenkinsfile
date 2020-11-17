@@ -6,10 +6,10 @@ pipeline {
             steps {
                 echo 'Jar Building..'
                 sh 'mvn clean package'
-                sh 'ls'
                 sh 'cp Dockerfile target/'
                 sh 'cp deployment.yaml target/'
                 sh 'cd target'
+                sh 'ls'
                 sh 'sudo docker build -t sptest .'
             }
         }
