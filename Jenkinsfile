@@ -11,7 +11,7 @@ pipeline {
         stage('Test Jar') {
             steps {
                 echo 'Jar Testing..'
-                sh 'docker ps'
+                sh 'sudo docker ps'
             }
         }
         stage('Deploy Jar') {
