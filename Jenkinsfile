@@ -10,10 +10,12 @@ pipeline {
                 sh 'cp deployment.yaml target/'
                 sh 'cp service.yaml target/'
                 sh 'cd target && sudo docker build -t sptest . && sudo kubectl apply -f deployment.yaml'
-                try {
-                      sh 'cd target && sudo kubectl apply -f service.yaml'
-                } catch (Exception e) {
-                    echo 'service created'
+                script {
+                    try {
+                        sh 'cd target && sudo kubectl apply -f service.yaml'
+                    } catch (Exception e) {
+                        echo 'service created'
+                    }
                 }
             }
         }
